@@ -3,7 +3,7 @@
 
 from datetime import datetime
 from hashlib import md5
-import sys
+#import sys
 __version__ = '0.1'
 
 
@@ -19,8 +19,8 @@ pvkey = False
 def hashkey():
     #print(pbkey,pvkey)
     if not(pbkey or pvkey) :
-        print('Err : pbkey or pvkey has no value!')
-        sys.exit()
+        raise Exception("Err : 'pbkey' or 'pvkey' has no value!")
+        
     
     ts = datetime.utcnow().strftime('%Y%m%d%H%M%S%f')[:-2]   #timestamp ts
     key = ts + pvkey + pbkey
